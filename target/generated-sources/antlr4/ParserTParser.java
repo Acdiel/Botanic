@@ -1,4 +1,4 @@
-// Generated from ParserT.g4 by ANTLR 4.7.1
+// Generated from ParserT.g4 by ANTLR 4.4
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,15 +10,21 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ParserTParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, BEGIN=8, END=9, 
+		T__6=1, T__5=2, T__4=3, T__3=4, T__2=5, T__1=6, T__0=7, BEGIN=8, END=9, 
 		PRINT=10, TYPEDEFINE=11, OR=12, AND=13, SUMA=14, RESTA=15, MULTIPLICACION=16, 
-		DIVISION=17, NAME=18, STRING=19, BOOL=20, INT=21, WS=22;
+		DIVISION=17, NAME=18, STRING=19, BOOL=20, INT=21, NUMBER=22, WS=23;
+	public static final String[] tokenNames = {
+		"<INVALID>", "'=>'", "'tiene salud '", "'tiene'", "'es de la especie:'", 
+		"'('", "')'", "'hojas'", "'sembrar'", "'cosechar'", "'diagnostico'", "'la planta'", 
+		"'podar'", "'regar'", "'primavera'", "'invierno'", "'injertar'", "'transplantar'", 
+		"NAME", "STRING", "BOOL", "INT", "NUMBER", "WS"
+	};
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_tipo = 2, RULE_entero = 3, 
 		RULE_boleano = 4, RULE_string = 5, RULE_lectura = 6, RULE_diagnostico = 7;
@@ -27,51 +33,11 @@ public class ParserTParser extends Parser {
 		"diagnostico"
 	};
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'tiene'", "'hojas'", "'tiene salud '", "'es de la especie:'", "'=>'", 
-		"'('", "')'", "'sembrar'", "'cosechar'", "'diagnostico'", "'la planta'", 
-		"'podar'", "'regar'", "'primavera'", "'invierno'", "'injertar'", "'transplantar'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, null, "BEGIN", "END", "PRINT", 
-		"TYPEDEFINE", "OR", "AND", "SUMA", "RESTA", "MULTIPLICACION", "DIVISION", 
-		"NAME", "STRING", "BOOL", "INT", "WS"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
-
-	/**
-	 * @deprecated Use {@link #VOCABULARY} instead.
-	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
-
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
-
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
-
-	@Override
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
-
 	@Override
 	public String getGrammarFileName() { return "ParserT.g4"; }
+
+	@Override
+	public String[] getTokenNames() { return tokenNames; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -89,11 +55,11 @@ public class ParserTParser extends Parser {
 	public static class ProgramContext extends ParserRuleContext {
 		public TerminalNode BEGIN() { return getToken(ParserTParser.BEGIN, 0); }
 		public TerminalNode END() { return getToken(ParserTParser.END, 0); }
-		public List<StatementContext> statement() {
-			return getRuleContexts(StatementContext.class);
-		}
 		public StatementContext statement(int i) {
 			return getRuleContext(StatementContext.class,i);
+		}
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
 		}
 		public ProgramContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -116,24 +82,21 @@ public class ParserTParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16);
-			match(BEGIN);
+			setState(16); match(BEGIN);
 			setState(18); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(17);
-				statement();
+				setState(17); statement();
 				}
 				}
 				setState(20); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==PRINT || _la==TYPEDEFINE );
-			setState(22);
-			match(END);
+			setState(22); match(END);
 			}
 		}
 		catch (RecognitionException re) {
@@ -173,20 +136,17 @@ public class ParserTParser extends Parser {
 		enterRule(_localctx, 2, RULE_statement);
 		try {
 			setState(26);
-			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case PRINT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(24);
-				diagnostico();
+				setState(24); diagnostico();
 				}
 				break;
 			case TYPEDEFINE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(25);
-				lectura();
+				setState(25); lectura();
 				}
 				break;
 			default:
@@ -205,14 +165,14 @@ public class ParserTParser extends Parser {
 	}
 
 	public static class TipoContext extends ParserRuleContext {
-		public EnteroContext entero() {
-			return getRuleContext(EnteroContext.class,0);
-		}
 		public BoleanoContext boleano() {
 			return getRuleContext(BoleanoContext.class,0);
 		}
 		public StringContext string() {
 			return getRuleContext(StringContext.class,0);
+		}
+		public EnteroContext entero() {
+			return getRuleContext(EnteroContext.class,0);
 		}
 		public TipoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -233,27 +193,23 @@ public class ParserTParser extends Parser {
 		enterRule(_localctx, 4, RULE_tipo);
 		try {
 			setState(31);
-			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__0:
+			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(28);
-				entero();
+				setState(28); entero();
 				}
 				break;
-			case T__2:
+			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(29);
-				boleano();
+				setState(29); boleano();
 				}
 				break;
 			case T__3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(30);
-				string();
+				setState(30); string();
 				}
 				break;
 			default:
@@ -293,12 +249,9 @@ public class ParserTParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33);
-			match(T__0);
-			setState(34);
-			match(INT);
-			setState(35);
-			match(T__1);
+			setState(33); match(T__4);
+			setState(34); match(INT);
+			setState(35); match(T__0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -334,10 +287,8 @@ public class ParserTParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(37);
-			match(T__2);
-			setState(38);
-			match(BOOL);
+			setState(37); match(T__5);
+			setState(38); match(BOOL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -373,10 +324,8 @@ public class ParserTParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(40);
-			match(T__3);
-			setState(41);
-			match(STRING);
+			setState(40); match(T__3);
+			setState(41); match(STRING);
 			}
 		}
 		catch (RecognitionException re) {
@@ -391,11 +340,11 @@ public class ParserTParser extends Parser {
 	}
 
 	public static class LecturaContext extends ParserRuleContext {
-		public TerminalNode TYPEDEFINE() { return getToken(ParserTParser.TYPEDEFINE, 0); }
 		public TerminalNode NAME() { return getToken(ParserTParser.NAME, 0); }
 		public TipoContext tipo() {
 			return getRuleContext(TipoContext.class,0);
 		}
+		public TerminalNode TYPEDEFINE() { return getToken(ParserTParser.TYPEDEFINE, 0); }
 		public LecturaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -416,14 +365,10 @@ public class ParserTParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(43);
-			match(TYPEDEFINE);
-			setState(44);
-			match(NAME);
-			setState(45);
-			match(T__4);
-			setState(46);
-			tipo();
+			setState(43); match(TYPEDEFINE);
+			setState(44); match(NAME);
+			setState(45); match(T__6);
+			setState(46); tipo();
 			}
 		}
 		catch (RecognitionException re) {
@@ -439,9 +384,9 @@ public class ParserTParser extends Parser {
 
 	public static class DiagnosticoContext extends ParserRuleContext {
 		public TerminalNode PRINT() { return getToken(ParserTParser.PRINT, 0); }
-		public TerminalNode INT() { return getToken(ParserTParser.INT, 0); }
 		public TerminalNode BOOL() { return getToken(ParserTParser.BOOL, 0); }
 		public TerminalNode STRING() { return getToken(ParserTParser.STRING, 0); }
+		public TerminalNode INT() { return getToken(ParserTParser.INT, 0); }
 		public DiagnosticoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -461,45 +406,32 @@ public class ParserTParser extends Parser {
 		enterRule(_localctx, 14, RULE_diagnostico);
 		try {
 			setState(60);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(48);
-				match(PRINT);
-				setState(49);
-				match(T__5);
-				setState(50);
-				match(INT);
-				setState(51);
-				match(T__6);
+				setState(48); match(PRINT);
+				setState(49); match(T__2);
+				setState(50); match(INT);
+				setState(51); match(T__1);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(52);
-				match(PRINT);
-				setState(53);
-				match(T__5);
-				setState(54);
-				match(BOOL);
-				setState(55);
-				match(T__6);
+				setState(52); match(PRINT);
+				setState(53); match(T__2);
+				setState(54); match(BOOL);
+				setState(55); match(T__1);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(56);
-				match(PRINT);
-				setState(57);
-				match(T__5);
-				setState(58);
-				match(STRING);
-				setState(59);
-				match(T__6);
+				setState(56); match(PRINT);
+				setState(57); match(T__2);
+				setState(58); match(STRING);
+				setState(59); match(T__1);
 				}
 				break;
 			}
@@ -516,22 +448,22 @@ public class ParserTParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\30A\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31A\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\6\2\25\n\2"+
 		"\r\2\16\2\26\3\2\3\2\3\3\3\3\5\3\35\n\3\3\4\3\4\3\4\5\4\"\n\4\3\5\3\5"+
 		"\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3"+
 		"\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t?\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2"+
-		"\2\2>\2\22\3\2\2\2\4\34\3\2\2\2\6!\3\2\2\2\b#\3\2\2\2\n\'\3\2\2\2\f*\3"+
-		"\2\2\2\16-\3\2\2\2\20>\3\2\2\2\22\24\7\n\2\2\23\25\5\4\3\2\24\23\3\2\2"+
-		"\2\25\26\3\2\2\2\26\24\3\2\2\2\26\27\3\2\2\2\27\30\3\2\2\2\30\31\7\13"+
-		"\2\2\31\3\3\2\2\2\32\35\5\20\t\2\33\35\5\16\b\2\34\32\3\2\2\2\34\33\3"+
-		"\2\2\2\35\5\3\2\2\2\36\"\5\b\5\2\37\"\5\n\6\2 \"\5\f\7\2!\36\3\2\2\2!"+
-		"\37\3\2\2\2! \3\2\2\2\"\7\3\2\2\2#$\7\3\2\2$%\7\27\2\2%&\7\4\2\2&\t\3"+
-		"\2\2\2\'(\7\5\2\2()\7\26\2\2)\13\3\2\2\2*+\7\6\2\2+,\7\25\2\2,\r\3\2\2"+
-		"\2-.\7\r\2\2./\7\24\2\2/\60\7\7\2\2\60\61\5\6\4\2\61\17\3\2\2\2\62\63"+
-		"\7\f\2\2\63\64\7\b\2\2\64\65\7\27\2\2\65?\7\t\2\2\66\67\7\f\2\2\678\7"+
-		"\b\2\289\7\26\2\29?\7\t\2\2:;\7\f\2\2;<\7\b\2\2<=\7\25\2\2=?\7\t\2\2>"+
-		"\62\3\2\2\2>\66\3\2\2\2>:\3\2\2\2?\21\3\2\2\2\6\26\34!>";
+		"\2>\2\22\3\2\2\2\4\34\3\2\2\2\6!\3\2\2\2\b#\3\2\2\2\n\'\3\2\2\2\f*\3\2"+
+		"\2\2\16-\3\2\2\2\20>\3\2\2\2\22\24\7\n\2\2\23\25\5\4\3\2\24\23\3\2\2\2"+
+		"\25\26\3\2\2\2\26\24\3\2\2\2\26\27\3\2\2\2\27\30\3\2\2\2\30\31\7\13\2"+
+		"\2\31\3\3\2\2\2\32\35\5\20\t\2\33\35\5\16\b\2\34\32\3\2\2\2\34\33\3\2"+
+		"\2\2\35\5\3\2\2\2\36\"\5\b\5\2\37\"\5\n\6\2 \"\5\f\7\2!\36\3\2\2\2!\37"+
+		"\3\2\2\2! \3\2\2\2\"\7\3\2\2\2#$\7\5\2\2$%\7\27\2\2%&\7\t\2\2&\t\3\2\2"+
+		"\2\'(\7\4\2\2()\7\26\2\2)\13\3\2\2\2*+\7\6\2\2+,\7\25\2\2,\r\3\2\2\2-"+
+		".\7\r\2\2./\7\24\2\2/\60\7\3\2\2\60\61\5\6\4\2\61\17\3\2\2\2\62\63\7\f"+
+		"\2\2\63\64\7\7\2\2\64\65\7\27\2\2\65?\7\b\2\2\66\67\7\f\2\2\678\7\7\2"+
+		"\289\7\26\2\29?\7\b\2\2:;\7\f\2\2;<\7\7\2\2<=\7\25\2\2=?\7\b\2\2>\62\3"+
+		"\2\2\2>\66\3\2\2\2>:\3\2\2\2?\21\3\2\2\2\6\26\34!>";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

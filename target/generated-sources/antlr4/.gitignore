@@ -1,0 +1,13 @@
+/ParserT.interp
+/ParserT.tokens
+/ParserTBaseListener.java
+/ParserTBaseVisitor.java
+/ParserTLexer.interp
+/ParserTLexer.java
+/ParserTLexer.tokens
+/ParserTListener.java
+/ParserTParser.java
+/ParserTVisitor.java
+/LexerT.interp
+/LexerT.java
+/LexerT.tokens

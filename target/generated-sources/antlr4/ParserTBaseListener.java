@@ -1,6 +1,7 @@
-// Generated from ParserT.g4 by ANTLR 4.7.1
+// Generated from ParserT.g4 by ANTLR 4.4
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -15,120 +16,120 @@ public class ParserTBaseListener implements ParserTListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(ParserTParser.ProgramContext ctx) { }
+	@Override public void enterBoleano(@NotNull ParserTParser.BoleanoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProgram(ParserTParser.ProgramContext ctx) { }
+	@Override public void exitBoleano(@NotNull ParserTParser.BoleanoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(ParserTParser.StatementContext ctx) { }
+	@Override public void enterTipo(@NotNull ParserTParser.TipoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(ParserTParser.StatementContext ctx) { }
+	@Override public void exitTipo(@NotNull ParserTParser.TipoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo(ParserTParser.TipoContext ctx) { }
+	@Override public void enterString(@NotNull ParserTParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo(ParserTParser.TipoContext ctx) { }
+	@Override public void exitString(@NotNull ParserTParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEntero(ParserTParser.EnteroContext ctx) { }
+	@Override public void enterDiagnostico(@NotNull ParserTParser.DiagnosticoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEntero(ParserTParser.EnteroContext ctx) { }
+	@Override public void exitDiagnostico(@NotNull ParserTParser.DiagnosticoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoleano(ParserTParser.BoleanoContext ctx) { }
+	@Override public void enterStatement(@NotNull ParserTParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoleano(ParserTParser.BoleanoContext ctx) { }
+	@Override public void exitStatement(@NotNull ParserTParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterString(ParserTParser.StringContext ctx) { }
+	@Override public void enterEntero(@NotNull ParserTParser.EnteroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitString(ParserTParser.StringContext ctx) { }
+	@Override public void exitEntero(@NotNull ParserTParser.EnteroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLectura(ParserTParser.LecturaContext ctx) { }
+	@Override public void enterProgram(@NotNull ParserTParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLectura(ParserTParser.LecturaContext ctx) { }
+	@Override public void exitProgram(@NotNull ParserTParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDiagnostico(ParserTParser.DiagnosticoContext ctx) { }
+	@Override public void enterLectura(@NotNull ParserTParser.LecturaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDiagnostico(ParserTParser.DiagnosticoContext ctx) { }
+	@Override public void exitLectura(@NotNull ParserTParser.LecturaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(TerminalNode node) { }
+	@Override public void visitTerminal(@NotNull TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) { }
+	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
 }
