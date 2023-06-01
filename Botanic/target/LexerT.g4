@@ -39,5 +39,6 @@ NAME:[a-z]+;//nombre de variable en minusculas
 STRING:'"'[ A-Za-z]+'"';//string
 INT : [0-9]+ ;//int
 FLOAT: [0-9]+','[0-9]+;
+CONST: [0-9]+ ','[0-9]+;
 
 WS : [ \t\r\n]+ -> skip ;

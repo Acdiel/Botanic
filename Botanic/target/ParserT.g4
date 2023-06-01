@@ -13,6 +13,7 @@ tipo : entero | decimal | string;
 entero: 'tiene' INT 'hojas' ;
 decimal: 'tiene edad' FLOAT; 
 string: 'es de la especie:' STRING;
+const: 'tierra' CONST;
 
 operar : sumar | restar | dividir | multiplicar;
 sumar : NAME SUMA NAME;
