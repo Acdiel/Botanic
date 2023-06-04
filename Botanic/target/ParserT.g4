@@ -1,25 +1,42 @@
 grammar ParserT;
 import LexerT;
 
-program   : BEGIN statement+ END;
+program   : BEGIN statement* END;
           
-statement : diagnostico | lectura | operar ;
+statement : lectura | impresion | problemamatematico | ciclo ;
 
 
 lectura : TYPEDEFINE NAME '=>' tipo;
 
-tipo : entero | decimal | string;
-
+tipo : entero | decimal | especie;
 entero: 'tiene' INT 'hojas' ;
 decimal: 'tiene edad' FLOAT; 
-string: 'es de la especie:' STRING;
-const: 'tierra' CONST;
-
-operar : sumar | restar | dividir | multiplicar;
-sumar : NAME SUMA NAME;
-restar: NAME RESTA NAME;
-multiplicar: NAME MULTIPLICACION NAME;
-dividir: NAME DIVISION NAME;
+especie: 'es de la especie:' STRING;
+constante: 'tierra' FLOAT;
 
 
-diagnostico     : PRINT '('NAME')';
+impresion: PRINT '('NAME')';
+
+
+problemamatematico : operacion | funcion;
+
+operacion: NAME operador NAME;
+operador: SUMA | RESTA | MULTIPLICACION | DIVISION;
+
+funcion: seno | coseno | raizcuadrada | potencia;
+seno: SENO NAME;
+coseno: 'plantaremos de forma' COSENO 'a' NAME;
+raizcuadrada: NAME 'tiene' SQRT VARCHAR;
+potencia: POW 'en' NAME num 'veces';
+num: INT | FLOAT;
+
+
+ciclo: mientras | por | si;
+
+mientras: WHILE 'mientras' condicion;
+por: FOR 'desde' INT 'hasta' INT;
+si: IF condicion;
+
+condicion: afirmacion ( (AND | OR) afirmacion )*;
+afirmacion: NAME oplogico NAME;
+oplogico: MAYOR | MENOR | IGUAL;
