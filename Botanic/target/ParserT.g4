@@ -12,7 +12,6 @@ tipo : entero | decimal | especie;
 entero: 'tiene ' INT ' hojas' ;
 decimal: 'tiene edad ' FLOAT; 
 especie: 'es de la especie:' STRING;
-constante: 'tierra ' FLOAT;
 
 
 impresion: PRINT '('NAME')';
