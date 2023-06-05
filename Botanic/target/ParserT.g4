@@ -24,19 +24,17 @@ operacion: NAME 'le afecta' operador 'en' NAME;
 operador: SUMA | RESTA | MULTIPLICACION | DIVISION;
 
 funcion: seno | coseno | raizcuadrada;
-seno: SENO NAME;
-coseno: 'plantaremos de forma ' COSENO 'a' NAME;
-raizcuadrada: NAME 'tiene' SQRT NAME;
-
-num: INT | FLOAT;
+seno: SENO NAME 'en' NAME;
+coseno: 'plantaremos de forma' COSENO 'a' NAME 'en' NAME;
+raizcuadrada: NAME 'tiene' SQRT 'en' NAME;
 
 
 ciclo: mientras | por | si;
 
 mientras: WHILE 'mientras' condicion statement* '.';
-por: FOR 'desde' INT 'hasta' INT statement* '.';
-si: IF condicion statement* '.';
+por: FOR 'desde' NAME 'hasta' NAME statement* '.';
+si: IF 'si' condicion statement* '.';
 
 condicion: afirmacion ( (AND | OR) afirmacion )*;
-afirmacion: NAME oplogico NAME;
+afirmacion: NAME 'es' oplogico 'a' NAME;
 oplogico: MAYOR | MENOR | IGUAL;

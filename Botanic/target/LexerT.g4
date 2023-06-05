@@ -21,7 +21,7 @@ RESTA:'invierno';
 MULTIPLICACION:'injertar';
 DIVISION:'transplantar';
 
-//operaciones matematicas
+//funciones matematicas
 COSENO: 'sistematica';
 SENO :'albuca';
 SQRT :'raiz';  
