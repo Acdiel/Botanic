@@ -25,7 +25,7 @@ operador: SUMA | RESTA | MULTIPLICACION | DIVISION;
 funcion: seno | coseno | raizcuadrada;
 seno: SENO NAME 'en' NAME;
 coseno: 'plantaremos de forma' COSENO 'a' NAME 'en' NAME;
-raizcuadrada: NAME 'tiene' SQRT 'en' NAME;
+raizcuadrada: NAME 'posee' SQRT 'en' NAME;
 
 
 ciclo: mientras | por | si;

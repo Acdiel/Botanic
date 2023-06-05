@@ -1,4 +1,4 @@
-// Generated from LexerT.g4 by ANTLR 4.7.1
+// Generated from LexerT.g4 by ANTLR 4.4
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class LexerT extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -20,63 +20,21 @@ public class LexerT extends Lexer {
 		IGUAL=9, SUMA=10, RESTA=11, MULTIPLICACION=12, DIVISION=13, COSENO=14, 
 		SENO=15, SQRT=16, IF=17, WHILE=18, FOR=19, INT=20, FLOAT=21, STRING=22, 
 		NAME=23, WS=24;
-	public static String[] channelNames = {
-		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
-	};
-
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
 	};
 
+	public static final String[] tokenNames = {
+		"'\\u0000'", "'\\u0001'", "'\\u0002'", "'\\u0003'", "'\\u0004'", "'\\u0005'", 
+		"'\\u0006'", "'\\u0007'", "'\b'", "'\t'", "'\n'", "'\\u000B'", "'\f'", 
+		"'\r'", "'\\u000E'", "'\\u000F'", "'\\u0010'", "'\\u0011'", "'\\u0012'", 
+		"'\\u0013'", "'\\u0014'", "'\\u0015'", "'\\u0016'", "'\\u0017'", "'\\u0018'"
+	};
 	public static final String[] ruleNames = {
 		"BEGIN", "END", "TYPEDEFINE", "PRINT", "OR", "AND", "MAYOR", "MENOR", 
 		"IGUAL", "SUMA", "RESTA", "MULTIPLICACION", "DIVISION", "COSENO", "SENO", 
 		"SQRT", "IF", "WHILE", "FOR", "INT", "FLOAT", "STRING", "NAME", "WS"
 	};
-
-	private static final String[] _LITERAL_NAMES = {
-		null, "'sembrar'", "'cosechar'", "'la planta'", "'diagnostico'", "'podar'", 
-		"'regar'", "'mas largo'", "'menos largo'", "'mismo largo'", "'primavera'", 
-		"'invierno'", "'injertar'", "'transplantar'", "'sistematica'", "'albuca'", 
-		"'raiz'", "'plantaremos'", "'abonaremos'", "'cavaremos'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "BEGIN", "END", "TYPEDEFINE", "PRINT", "OR", "AND", "MAYOR", "MENOR", 
-		"IGUAL", "SUMA", "RESTA", "MULTIPLICACION", "DIVISION", "COSENO", "SENO", 
-		"SQRT", "IF", "WHILE", "FOR", "INT", "FLOAT", "STRING", "NAME", "WS"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
-
-	/**
-	 * @deprecated Use {@link #VOCABULARY} instead.
-	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
-
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
-
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
-
-	@Override
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
 
 
 	public LexerT(CharStream input) {
@@ -88,13 +46,13 @@ public class LexerT extends Lexer {
 	public String getGrammarFileName() { return "LexerT.g4"; }
 
 	@Override
+	public String[] getTokenNames() { return tokenNames; }
+
+	@Override
 	public String[] getRuleNames() { return ruleNames; }
 
 	@Override
 	public String getSerializedATN() { return _serializedATN; }
-
-	@Override
-	public String[] getChannelNames() { return channelNames; }
 
 	@Override
 	public String[] getModeNames() { return modeNames; }
@@ -103,7 +61,7 @@ public class LexerT extends Lexer {
 	public ATN getATN() { return _ATN; }
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\32\u010e\b\1\4\2"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2\32\u010e\b\1\4\2"+
 		"\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4"+
 		"\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22"+
 		"\t\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31"+
@@ -124,13 +82,13 @@ public class LexerT extends Lexer {
 		"\3\27\3\27\3\30\6\30\u0104\n\30\r\30\16\30\u0105\3\31\6\31\u0109\n\31"+
 		"\r\31\16\31\u010a\3\31\3\31\2\2\32\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n"+
 		"\23\13\25\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24\'\25)\26+\27-\30"+
-		"/\31\61\32\3\2\6\3\2\62;\4\2C\\c|\3\2c|\5\2\13\f\17\17\"\"\2\u0113\2\3"+
-		"\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2\2"+
-		"\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31"+
-		"\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2\2"+
-		"\2%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2\2/\3\2\2\2\2"+
-		"\61\3\2\2\2\3\63\3\2\2\2\5;\3\2\2\2\7D\3\2\2\2\tN\3\2\2\2\13Z\3\2\2\2"+
-		"\r`\3\2\2\2\17f\3\2\2\2\21p\3\2\2\2\23|\3\2\2\2\25\u0088\3\2\2\2\27\u0092"+
+		"/\31\61\32\3\2\6\3\2\62;\4\2C\\c|\3\2c|\5\2\13\f\17\17\"\"\u0113\2\3\3"+
+		"\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2\2\2"+
+		"\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3"+
+		"\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2\2\2"+
+		"%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2\2/\3\2\2\2\2\61"+
+		"\3\2\2\2\3\63\3\2\2\2\5;\3\2\2\2\7D\3\2\2\2\tN\3\2\2\2\13Z\3\2\2\2\r`"+
+		"\3\2\2\2\17f\3\2\2\2\21p\3\2\2\2\23|\3\2\2\2\25\u0088\3\2\2\2\27\u0092"+
 		"\3\2\2\2\31\u009b\3\2\2\2\33\u00a4\3\2\2\2\35\u00b1\3\2\2\2\37\u00bd\3"+
 		"\2\2\2!\u00c4\3\2\2\2#\u00c9\3\2\2\2%\u00d5\3\2\2\2\'\u00e0\3\2\2\2)\u00eb"+
 		"\3\2\2\2+\u00f0\3\2\2\2-\u00fa\3\2\2\2/\u0103\3\2\2\2\61\u0108\3\2\2\2"+
