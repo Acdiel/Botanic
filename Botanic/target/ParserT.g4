@@ -6,37 +6,37 @@ program   : BEGIN statement* END;
 statement : lectura | impresion | problemamatematico | ciclo ;
 
 
-lectura : TYPEDEFINE VARCHAR '=>' tipo;
+lectura : TYPEDEFINE NAME '=>' tipo;
 
 tipo : entero | decimal | especie;
 entero: 'tiene ' INT ' hojas' ;
 decimal: 'tiene edad ' FLOAT; 
-especie: 'es de la especie: ' VARCHAR;
+especie: 'es de la especie:' STRING;
 constante: 'tierra ' FLOAT;
 
 
-impresion: PRINT '('VARCHAR')';
+impresion: PRINT '('NAME')';
 
 
 problemamatematico : operacion | funcion;
 
-operacion: VARCHAR operador VARCHAR;
+operacion: NAME 'le afecta' operador 'en' NAME;
 operador: SUMA | RESTA | MULTIPLICACION | DIVISION;
 
-funcion: seno | coseno | raizcuadrada | potencia;
-seno: SENO VARCHAR;
-coseno: 'plantaremos de forma ' COSENO 'a' VARCHAR;
-raizcuadrada: VARCHAR 'tiene' SQRT VARCHAR;
-potencia: POW 'en' VARCHAR num 'veces';
+funcion: seno | coseno | raizcuadrada;
+seno: SENO NAME;
+coseno: 'plantaremos de forma ' COSENO 'a' NAME;
+raizcuadrada: NAME 'tiene' SQRT NAME;
+
 num: INT | FLOAT;
 
 
 ciclo: mientras | por | si;
 
-mientras: WHILE 'mientras' condicion;
-por: FOR 'desde' INT 'hasta' INT;
-si: IF condicion;
+mientras: WHILE 'mientras' condicion statement* '.';
+por: FOR 'desde' INT 'hasta' INT statement* '.';
+si: IF condicion statement* '.';
 
 condicion: afirmacion ( (AND | OR) afirmacion )*;
-afirmacion: VARCHAR oplogico VARCHAR;
+afirmacion: NAME oplogico NAME;
 oplogico: MAYOR | MENOR | IGUAL;

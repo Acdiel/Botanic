@@ -1,0 +1,8 @@
+antlr4.antlrRegisteredTools=4.4@C\:\\Users\\lucas\\AppData\\Local\\Temp\\antlr-4.4-complete.jar\:4.7.1@C\:\\Users\\lucas\\AppData\\Local\\Temp\\antlr-4.7.1-complete.jar
+antlr4.antlrToolPath=C\:\\Users\\lucas\\AppData\\Local\\Temp\\antlr-4.7.1-complete.jar
+antlr4.encoding=UTF-8
+antlr4.listener=false
+antlr4.visitor=true
+antlr4.vmArgs=
+eclipse.preferences.version=1
+outlet.DEFAULT_OUTPUT.directory=./target/generated-sources/antlr4
