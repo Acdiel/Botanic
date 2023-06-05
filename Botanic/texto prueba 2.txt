@@ -1,5 +1,5 @@
 sembrar
-cola tiene raiz en guisantes
+cola posee raiz en guisantes
 cavaremos desde guisante hasta maiz
 plantaremos de forma sistematica a maiz en guisantes
 .
