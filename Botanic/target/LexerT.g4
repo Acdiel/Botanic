@@ -36,8 +36,8 @@ WHILE : 'abonaremos';
 FOR: 'cavaremos';
  
 //variables y tipos de datos
-INT : [0-9]+ ;//int
-FLOAT: [0-9]+ ',' [0-9]+;
+INT : '-'?[0-9]+ ;//int
+FLOAT: '-'?[0-9]+ ',' [0-9]+;
 STRING: '"' [A-Za-z]+ '"'; //string
 NAME:[a-z]+;//nombre de variable en minusculas
 
