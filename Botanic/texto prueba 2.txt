@@ -1,6 +1,0 @@
-sembrar
-cola posee raiz en guisantes
-cavaremos desde guisante hasta maiz
-plantaremos de forma sistematica a maiz en guisantes
-.
-cosechar
