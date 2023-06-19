@@ -1,9 +1,14 @@
 sembrar
-la planta angelical => tiene 26 hojas
-la planta cerezo => tiene edad 0,9
+la planta angelical => tiene -26 hojas
+la planta cerezo => tiene edad -6,4
 la planta maiz => es de la especie: "HolaMundo"
 
-diagnostico(angelical)
-diagnostico(cerezo)
+manzano <= angelical le afecta transplantar en cerezo
+naranjo <= cerezo le afecta transplantar en angelical
+
 diagnostico(maiz)
+diagnostico(manzano)
+diagnostico(operacionmanzano)
+diagnostico(cerezo)
+
 cosechar
