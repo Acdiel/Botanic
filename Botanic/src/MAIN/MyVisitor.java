@@ -1,8 +1,6 @@
 package MAIN;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
@@ -41,6 +39,11 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return false;
 	}
 
+	public String d_Str(Double numero)
+	{
+		return String.format("%.4f", numero).replace(",", ".");
+	}
+
 	public void realizarGuardarOperacion(String value1, String value2, String operador, String key){
 		Double valor1 = Double.parseDouble(value1);
 		Double valor2 = Double.parseDouble(value2);
@@ -49,28 +52,28 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		if(operador.equals("primavera"))
 		{
 			valorFinal = valor1 + valor2;
-			variables.put("operacion" + key, valor1 + " + " +valor2);;
+			variables.put("operacion" + key, d_Str(valorFinal)+" = " + d_Str(valor1) + " + " +d_Str(valor2));;
 		}
 		else if(operador.equals("invierno"))
 		{
 			valorFinal = valor1 - valor2;
-			variables.put("operacion" + key, valor1 + " - " +valor2);;
+			variables.put("operacion" + key, d_Str(valorFinal)+" = " + d_Str(valor1) + " - " +d_Str(valor2));;
 		}
 		else if(operador.equals("injertar"))
 		{
 			valorFinal = valor1 * valor2;
-			variables.put("operacion" + key, valor1 + " * " +valor2);;
+			variables.put("operacion" + key, d_Str(valorFinal)+" = "+ d_Str(valor1) + " * " +d_Str(valor2));;
 		}
 		else if(operador.equals("transplantar"))
 		{
 			if(valor2 == 0.0){
 				System.out.println("No se puede tener 0.0 de divisor.");
 				variables.put(key, null);
-				variables.put("operacion" + key, valor1 + " / " +valor2);
+				variables.put("operacion" + key, d_Str(valorFinal) + " = " + d_Str(valor1) + " / " + d_Str(valor2));
 				return;
 			}
 			valorFinal = valor1 / valor2;
-			variables.put("operacion" + key, valor1 + " / " +valor2);
+			variables.put("operacion" + key, d_Str(valorFinal)+" = " +  d_Str(valor1) + " / " + d_Str(valor2));
 		}
 		else{
 			System.out.println("No existe el operador.");
@@ -78,12 +81,16 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 			return;
 		}
 
-		String resultado = String.format("%.4f", valorFinal);
+		String resultado = d_Str(valorFinal);
 		// Transforma la coma en punto (Double es con punto)
 		resultado = resultado.replace(",", ".");
 		variables.put(key, resultado);
 	}
 	
+
+	/*****************************************************************************************
+		LECTURA
+	******************************************************************************************/
 	@Override
 	public Integer visitLectura(ParserTParser.LecturaContext ctx) {
 		String nombreVariable = ctx.getChild(1).getText();
@@ -94,8 +101,6 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return visitChildren(ctx);
 	}
 
-	
-	// Con esto conseguimos los tipos
 	@Override
 	public Integer visitEntero(ParserTParser.EnteroContext ctx) 
 	{
@@ -136,6 +141,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return visitChildren(ctx);
 	}
 
+
+	/*****************************************************************************************
+		OPERACIONES
+	******************************************************************************************/
 	@Override
 	public Integer visitOperacion(ParserTParser.OperacionContext ctx)
 	{
@@ -163,6 +172,84 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	}
 
 
+	/*****************************************************************************************
+		FUNCIONES
+	******************************************************************************************/
+	@Override
+	public Integer visitSeno(ParserTParser.SenoContext ctx) 
+	{
+		String key = ctx.getChild(3).getText();
+		String value = variables.get(ctx.getChild(1).getText());
+
+		if (!isNum(value))
+		{
+			System.out.println(ctx.getChild(2).getText() + " no es un numero. No se puede realizar la función.");
+			variables.put(key, null);
+			return visitChildren(ctx);
+		}
+
+		Double valor = Double.parseDouble(value);
+		Double seno_valor = Math.sin(valor);
+
+		String resultado = d_Str(seno_valor);
+
+		variables.put(key, resultado);
+		variables.put("funcion"+key, resultado + " = " + "sen(" + d_Str(valor) + ")");
+
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitCoseno(ParserTParser.CosenoContext ctx) 
+	{
+		String key = ctx.getChild(5).getText();
+		String value = variables.get(ctx.getChild(3).getText());
+		
+		if (!isNum(value))
+		{
+			System.out.println(ctx.getChild(2).getText() + " no es un numero. No se puede realizar la función.");
+			variables.put(key, null);
+			return visitChildren(ctx);
+		}
+
+		Double valor = Double.parseDouble(value);
+		Double coseno_valor = Math.cos(valor);
+
+		String resultado = d_Str(coseno_valor);
+
+		variables.put(key, resultado);
+		variables.put("funcion"+key, resultado + " = " + "cos(" + d_Str(valor) + ")");
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitRaizcuadrada(ParserTParser.RaizcuadradaContext ctx)
+	{
+		String key = ctx.getChild(4).getText();
+		String value = variables.get(ctx.getChild(0).getText());
+
+		if (!isNum(value))
+		{
+			System.out.println(ctx.getChild(2).getText() + " no es un numero. No se puede realizar la función.");
+			variables.put(key, null);
+			return visitChildren(ctx);
+		}
+
+		Double valor = Double.parseDouble(value);
+		Double raiz_valor = Math.sqrt(valor);
+
+		String resultado = d_Str(raiz_valor);
+
+		variables.put(key, resultado);
+		variables.put("funcion"+key, resultado + " = " + "sqrt(" + d_Str(valor) + ")");
+
+		return visitChildren(ctx);
+	}
+
+
+	/*****************************************************************************************
+		IMPRESION
+	******************************************************************************************/
 	@Override
 	public Integer visitImpresion(ParserTParser.ImpresionContext ctx)
 	{
