@@ -257,4 +257,22 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		
 		return visitChildren(ctx);
 	}
+
+
+	@Override public Integer visitSi(ParserTParser.SiContext ctx) {
+		
+		for (int i=0; i<5 ;i++){
+			System.out.println(i +" = " +ctx.getChild(i).getText());
+		}
+
+		return visitChildren(ctx);
+	}
+
+	@Override public Integer visitAfirmacion(ParserTParser.AfirmacionContext ctx) { 
+		for (int i=0; i<4 ;i++){
+			System.out.println(i +" = " +ctx.getChild(i).getText());
+		}
+		
+		return visitChildren(ctx);
+	}
 }

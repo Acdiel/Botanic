@@ -1,16 +1,16 @@
 sembrar
 la planta angelical => tiene -26 hojas
-la planta cerezo => tiene edad -6,4
-la planta maiz => es de la especie: "HolaMundo"
-
-manzano <= angelical le afecta transplantar en cerezo
-naranjo <= cerezo le afecta transplantar en angelical
-
-plantaremos de forma sistematica a manzano en semillalol
+la planta cerezo => tiene edad -25,0
+la planta maiz => es de la especie: "detntroSi"
+la planta maizal => es de la especie: "fueraSi"
 
 
-diagnostico(manzano)
-diagnostico(semillalol)
-diagnostico(funcionsemillalol)
+plantaremos si angelical es mismo largo a cerezo
+
+diagnostico(maiz)
+
+.
+
+diagnostico(maizal)
 
 cosechar
