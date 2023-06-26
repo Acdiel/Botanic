@@ -2,6 +2,7 @@ package MAIN;
 
 import java.util.*;
 
+import org.antlr.v4.parse.ANTLRParser.range_return;
 import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 
@@ -248,30 +249,108 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 
 	/*****************************************************************************************
+		SI
+	******************************************************************************************/
+	@Override
+	public Integer visitSi(ParserTParser.SiContext ctx)
+	{
+		boolean afirmacion =  visitCondicionNodo( (ParserTParser.CondicionContext) ctx.getChild(2) );
+
+		if(afirmacion)
+		{	
+			for (int i = 3; true ; i++)
+			{
+				try {
+					if(ctx.getChild(i).getText().equals("."))
+					{break;}
+					visitStatement( (ParserTParser.StatementContext) ctx.getChild(i) );
+				} catch (Exception e) {
+					break;
+				}
+				
+			}
+		}
+
+		return 0;
+	}
+
+	public boolean visitCondicionNodo(ParserTParser.CondicionContext ctx)
+	{
+		boolean afirmacion = visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(0) );
+		String and_or;
+
+		for( int i = 2; true; i+=2){
+			try {
+				and_or = ctx.getChild(i-1).getText();
+
+				if(and_or.equals("regar")) // regar es AND
+				{
+					afirmacion = afirmacion && visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(i) );
+					continue;
+				}
+
+				if(and_or.equals("podar")) // podar es OR
+				{
+					afirmacion = afirmacion || visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(i) );
+					continue;
+				}
+
+			} catch (Exception e) {
+				break;
+			}
+		}
+
+		return afirmacion;
+	}
+
+	public boolean visitAfirmacionNodo(ParserTParser.AfirmacionContext ctx)
+	{
+		String value1 = variables.get( ctx.getChild(0).getText() );
+		String value2 = variables.get( ctx.getChild(4).getText() );
+		String opLogico = ctx.getChild(2).getText();
+
+		try{ // Si es numero entra
+			Double valor1 = Double.parseDouble(value1);
+			Double valor2 = Double.parseDouble(value2);
+
+			if(opLogico.equals("mas largo")){
+				if(Double.compare(valor1, valor2) > 0){
+					return true;
+				}
+			}
+
+			if(opLogico.equals("menos largo")){
+				if(Double.compare(valor1, valor2) < 0){
+					return true;
+				}
+			}
+
+			if(opLogico.equals("mismo largo")){
+				if(Double.compare(valor1, valor2) == 0){
+					return true;
+				}
+			}
+
+		} catch (Exception e){}
+
+		try { // el string no puede ser mayor o menor a otro string
+			if(opLogico.equals("mismo largo")){
+				if(value1.equals(value2)){
+					return true;
+				}
+			}
+		} catch (Exception e) {}
+
+		return false;
+	}
+
+	/*****************************************************************************************
 		IMPRESION
 	******************************************************************************************/
 	@Override
 	public Integer visitImpresion(ParserTParser.ImpresionContext ctx)
 	{
 		System.out.println(variables.get(ctx.getChild(2).getText()));
-		
-		return visitChildren(ctx);
-	}
-
-
-	@Override public Integer visitSi(ParserTParser.SiContext ctx) {
-		
-		for (int i=0; i<5 ;i++){
-			System.out.println(i +" = " +ctx.getChild(i).getText());
-		}
-
-		return visitChildren(ctx);
-	}
-
-	@Override public Integer visitAfirmacion(ParserTParser.AfirmacionContext ctx) { 
-		for (int i=0; i<4 ;i++){
-			System.out.println(i +" = " +ctx.getChild(i).getText());
-		}
 		
 		return visitChildren(ctx);
 	}
