@@ -45,6 +45,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return String.format("%.4f", numero).replace(",", ".");
 	}
 
+	/************************ OPERACION FUNCIONES ********************/
 	public void realizarGuardarOperacion(String value1, String value2, String operador, String key){
 		Double valor1 = Double.parseDouble(value1);
 		Double valor2 = Double.parseDouble(value2);
@@ -87,6 +88,78 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		resultado = resultado.replace(",", ".");
 		variables.put(key, resultado);
 	}
+	/************************ FIN OPERACION FUNCIONES ********************/
+	/************************ CICLO FUNCIONES ********************/
+	// Funciones que usan los nodos de ciclo
+	public boolean visitCondicionNodo(ParserTParser.CondicionContext ctx)
+	{
+		boolean afirmacion = visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(0) );
+		String and_or;
+
+		for( int i = 2; true; i+=2){
+			try {
+				and_or = ctx.getChild(i-1).getText();
+
+				if(and_or.equals("regar")) // regar es AND
+				{
+					afirmacion = afirmacion && visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(i) );
+					continue;
+				}
+
+				if(and_or.equals("podar")) // podar es OR
+				{
+					afirmacion = afirmacion || visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(i) );
+					continue;
+				}
+
+			} catch (Exception e) {
+				break;
+			}
+		}
+
+		return afirmacion;
+	}
+	public boolean visitAfirmacionNodo(ParserTParser.AfirmacionContext ctx)
+	{
+		String value1 = variables.get( ctx.getChild(0).getText() );
+		String value2 = variables.get( ctx.getChild(4).getText() );
+		String opLogico = ctx.getChild(2).getText();
+
+		try{ // Si es numero entra
+			Double valor1 = Double.parseDouble(value1);
+			Double valor2 = Double.parseDouble(value2);
+
+			if(opLogico.equals("mas largo")){
+				if(Double.compare(valor1, valor2) > 0){
+					return true;
+				}
+			}
+
+			if(opLogico.equals("menos largo")){
+				if(Double.compare(valor1, valor2) < 0){
+					return true;
+				}
+			}
+
+			if(opLogico.equals("mismo largo")){
+				if(Double.compare(valor1, valor2) == 0){
+					return true;
+				}
+			}
+
+		} catch (Exception e){}
+
+		try { // el string no puede ser mayor o menor a otro string
+			if(opLogico.equals("mismo largo")){
+				if(value1.equals(value2)){
+					return true;
+				}
+			}
+		} catch (Exception e) {}
+
+		return false;
+	}
+	/************************ FIN CICLO FUNCIONES ********************/
 	
 
 	/*****************************************************************************************
@@ -249,7 +322,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 
 	/*****************************************************************************************
-		SI
+		IF
 	******************************************************************************************/
 	@Override
 	public Integer visitSi(ParserTParser.SiContext ctx)
@@ -274,74 +347,70 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return 0;
 	}
 
-	public boolean visitCondicionNodo(ParserTParser.CondicionContext ctx)
+
+	/*****************************************************************************************
+		WHILE
+	******************************************************************************************/
+	@Override
+	public Integer visitMientras(ParserTParser.MientrasContext ctx) 
 	{
-		boolean afirmacion = visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(0) );
-		String and_or;
+		boolean afirmacion =  visitCondicionNodo( (ParserTParser.CondicionContext) ctx.getChild(2) );
 
-		for( int i = 2; true; i+=2){
-			try {
-				and_or = ctx.getChild(i-1).getText();
-
-				if(and_or.equals("regar")) // regar es AND
-				{
-					afirmacion = afirmacion && visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(i) );
-					continue;
+		while(afirmacion)
+		{	
+			for (int i = 3; true ; i++)
+			{
+				try {
+					if(ctx.getChild(i).getText().equals("."))
+					{break;}
+					visitStatement( (ParserTParser.StatementContext) ctx.getChild(i) );
+				} catch (Exception e) {
+					break;
 				}
-
-				if(and_or.equals("podar")) // podar es OR
-				{
-					afirmacion = afirmacion || visitAfirmacionNodo( (ParserTParser.AfirmacionContext) ctx.getChild(i) );
-					continue;
-				}
-
-			} catch (Exception e) {
-				break;
+				
 			}
+			afirmacion =  visitCondicionNodo( (ParserTParser.CondicionContext) ctx.getChild(2) );
 		}
-
-		return afirmacion;
+		return visitChildren(ctx);
 	}
 
-	public boolean visitAfirmacionNodo(ParserTParser.AfirmacionContext ctx)
+	/*****************************************************************************************
+		FOR
+	******************************************************************************************/
+	@Override
+	public Integer visitPor(ParserTParser.PorContext ctx) 
 	{
-		String value1 = variables.get( ctx.getChild(0).getText() );
-		String value2 = variables.get( ctx.getChild(4).getText() );
-		String opLogico = ctx.getChild(2).getText();
+		String inicio = variables.get( ctx.getChild(2).getText() );
+		String fin = variables.get( ctx.getChild(4).getText() );
 
-		try{ // Si es numero entra
-			Double valor1 = Double.parseDouble(value1);
-			Double valor2 = Double.parseDouble(value2);
+		if( !(isNum(inicio) && isNum(fin)) ){
+			return 0;
+		}
 
-			if(opLogico.equals("mas largo")){
-				if(Double.compare(valor1, valor2) > 0){
-					return true;
-				}
-			}
+		int desde;
+		int hasta;
 
-			if(opLogico.equals("menos largo")){
-				if(Double.compare(valor1, valor2) < 0){
-					return true;
-				}
-			}
+		try {
+			desde = Integer.parseInt(inicio);
+			hasta = Integer.parseInt(fin);
 
-			if(opLogico.equals("mismo largo")){
-				if(Double.compare(valor1, valor2) == 0){
-					return true;
-				}
-			}
-
-		} catch (Exception e){}
-
-		try { // el string no puede ser mayor o menor a otro string
-			if(opLogico.equals("mismo largo")){
-				if(value1.equals(value2)){
-					return true;
+			for (int j=desde ; j < hasta ; j++)
+			{
+				for (int i = 5; true ; i++)
+				{
+					try {
+						if(ctx.getChild(i).getText().equals("."))
+						{break;}
+						visitStatement( (ParserTParser.StatementContext) ctx.getChild(i) );
+					} catch (Exception e) {
+						break;
+					}
+					
 				}
 			}
 		} catch (Exception e) {}
-
-		return false;
+		
+		return 0;
 	}
 
 	/*****************************************************************************************
