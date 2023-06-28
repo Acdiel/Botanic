@@ -1,0 +1,18 @@
+Posdata
+
+Profesor, si hay una operacion y se guarda en una variable, ademas de guardar el valor de resultado en la variable, guarda un string de la operacion en una variable llamada operacionnombrevariable. Al imprimir dicha variable imprime la operacion.
+
+Por ejemplo:
+naranja <= naranja le afecta injertar en cerezo
+
+// naranja guarda el resultado de multiplicar naranja y cerezo
+
+diagnostico(operacionnaranja) //impresion
+
+//la impresion imprimiria resultado = valor1 x valor2
+
+// practicamente la operacion con la que se llego al resultado.
+
+
+
+En el caso de funcion pasa lo mismo, se crea una variable mas llamada funcionnombrevariable en vez de operacionnombrevariable. En el caso de seno, coseno, y raiz cuadrada se usa funcion en vez de operacion.
