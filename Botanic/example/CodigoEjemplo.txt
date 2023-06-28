@@ -1,18 +1,56 @@
 sembrar
-la planta angelical => tiene 26 hojas
+
+la planta angelical => tiene 0 hojas
+la planta girasol => tiene 5 hojas
+
 la planta cerezo => tiene edad -26,0
-la planta maiz => es de la especie: "detntroSi"
-la planta maizal => es de la especie: "fueraSi"
+la planta manzana => tiene 6 hojas
+la planta contador => tiene 0 hojas
+la planta sumauno => tiene 1 hojas
+
+la planta maiz => es de la especie: "Valor Final"
+la planta saltolinea => es de la especie: " "
+la planta ope => es de la especie: "Operacion"
+la planta inici => es de la especie: "Valor inicial"
 
 
-plantaremos si angelical es menos largo a cerezo
+naranja <= manzana le afecta injertar en cerezo
+diagnostico(inici)
+diagnostico(naranja)
+diagnostico(saltolinea)
 
-diagnostico(maiz)
-diagnostico(angelical)
-diagnostico(cerezo)
+cavaremos desde angelical hasta girasol
+
+naranja <= naranja le afecta injertar en cerezo
+
+diagnostico(ope)
+diagnostico(saltolinea)
+diagnostico(operacionnaranja)
+
+contador <= contador le afecta primavera en sumauno
 
 .
 
-diagnostico(maizal)
+diagnostico(saltolinea)
+diagnostico(maiz)
+diagnostico(naranja)
+diagnostico(saltolinea)
+
+
+la planta sucos => es de la especie: "Su coseno es"
+plantaremos de forma sistematica a naranja en mandarina
+
+diagnostico(sucos)
+diagnostico(funcionmandarina)
+
+la planta sies => es de la especie: "Es menor que zero"
+
+plantaremos si naranja es mas largo a angelical
+
+diagnostico(saltolinea)
+diagnostico(naranja)
+diagnostico(sies)
+
+.
 
 cosechar

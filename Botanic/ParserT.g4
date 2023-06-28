@@ -10,7 +10,7 @@ lectura : TYPEDEFINE NAME '=>' tipo;
 
 tipo : entero | decimal | especie;
 entero: 'tiene' INT 'hojas' ;
-decimal: 'tiene edad' FLOAT; 
+decimal: 'tiene edad' FLOAT;
 especie: 'es de la especie:' STRING;
 
 
