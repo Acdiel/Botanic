@@ -367,11 +367,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 				} catch (Exception e) {
 					break;
 				}
-				
+			
 			}
 			afirmacion =  visitCondicionNodo( (ParserTParser.CondicionContext) ctx.getChild(2) );
 		}
-		return visitChildren(ctx);
+
+		return 0;
 	}
 
 	/*****************************************************************************************

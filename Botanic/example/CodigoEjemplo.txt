@@ -17,15 +17,15 @@ la planta inici => es de la especie: "Valor inicial"
 naranja <= manzana le afecta injertar en cerezo
 diagnostico(inici)
 diagnostico(naranja)
-diagnostico(saltolinea)
 
 cavaremos desde angelical hasta girasol
 
 naranja <= naranja le afecta injertar en cerezo
 
-diagnostico(ope)
 diagnostico(saltolinea)
+diagnostico(ope)
 diagnostico(operacionnaranja)
+diagnostico(saltolinea)
 
 contador <= contador le afecta primavera en sumauno
 
@@ -50,6 +50,20 @@ plantaremos si naranja es mas largo a angelical
 diagnostico(saltolinea)
 diagnostico(naranja)
 diagnostico(sies)
+diagnostico(saltolinea)
+
+.
+
+
+la planta restatres => tiene -2 hojas
+
+abonaremos mientras contador es mas largo a sumauno
+
+diagnostico(saltolinea)
+diagnostico(contador)
+contador <= contador le afecta primavera en restatres
+diagnostico(operacioncontador)
+diagnostico(saltolinea)
 
 .
 
